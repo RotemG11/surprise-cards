@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מתנות לרומי - יום שלם רק לשנינו, בלי תוכניות מראש</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg1:#F6DCD6;
+    --bg2:#F0E7D8;
+    --card:#FFFDF9;
+    --ink:#4A3B34;
+    --ink-soft:#8A7A6E;
+    --blush:#E8918A;
+    --sage:#8FA588;
+    --tape:#F4D77E;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%);
+    font-family:'Rubik', sans-serif;
+    color:var(--ink);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:36px 18px;
+  }
+
+  .site-title{
+    text-align:center;
+    font-family:'Varela Round', sans-serif;
+    font-size:15px;
+    letter-spacing:.04em;
+    color:#B96B63;
+    margin-bottom:22px;
+    opacity:.9;
+    width:100%;
+    max-width:390px;
+  }
+
+  .wrap{
+    position:relative;
+    width:100%;
+    max-width:390px;
+  }
+
+  .tape{
+    position:absolute;
+    top:-16px;
+    left:50%;
+    transform:translateX(-50%) rotate(-3deg);
+    width:120px;
+    height:36px;
+    background:repeating-linear-gradient(45deg, var(--tape), var(--tape) 6px, #eecb63 6px, #eecb63 8px);
+    opacity:.85;
+    box-shadow:0 2px 4px rgba(0,0,0,.08);
+    z-index:2;
+    border-radius:2px;
+  }
+
+  .card{
+    position:relative;
+    background:var(--card);
+    border-radius:18px 18px 4px 4px;
+    box-shadow:0 20px 45px -18px rgba(74,59,52,.35);
+    padding:52px 30px 0 30px;
+    text-align:center;
+    transform:rotate(0.6deg);
+  }
+
+  .stamp{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:#FBEDEA;
+    color:var(--blush);
+    font-size:12px;
+    font-weight:500;
+    padding:6px 14px;
+    border-radius:100px;
+    margin-bottom:20px;
+  }
+  .stamp svg{width:13px;height:13px;}
+
+  h1{
+    font-family:'Varela Round', sans-serif;
+    font-size:26px;
+    font-weight:400;
+    line-height:1.55;
+    margin:0 0 16px 0;
+    color:var(--ink);
+  }
+
+  .sub{
+    font-size:15px;
+    line-height:1.85;
+    color:var(--ink-soft);
+    max-width:290px;
+    margin:0 auto;
+    font-weight:400;
+  }
+
+  .divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin:26px 0 20px 0;
+    color:var(--sage);
+  }
+  .divider .dot{width:5px;height:5px;border-radius:50%;background:var(--sage);opacity:.6;}
+
+  .torn{
+    height:26px;
+    width:100%;
+    background:var(--card);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 26' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L0 14 L14 20 L28 10 L42 22 L56 8 L70 18 L84 6 L98 20 L112 12 L126 24 L140 8 L154 18 L168 4 L182 20 L196 10 L210 22 L224 6 L238 18 L252 12 L266 24 L280 8 L294 18 L308 4 L322 20 L336 10 L350 22 L364 8 L378 16 L400 6 L400 0 Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 26' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L0 14 L14 20 L28 10 L42 22 L56 8 L70 18 L84 6 L98 20 L112 12 L126 24 L140 8 L154 18 L168 4 L182 20 L196 10 L210 22 L224 6 L238 18 L252 12 L266 24 L280 8 L294 18 L308 4 L322 20 L336 10 L350 22 L364 8 L378 16 L400 6 L400 0 Z'/%3E%3C/svg%3E");
+    -webkit-mask-size:100% 100%;
+    mask-size:100% 100%;
+    border-radius:0 0 4px 4px;
+    transform:rotate(0.6deg) translateY(-1px);
+  }
+
+  .footer{
+    text-align:center;
+    padding-top:14px;
+    font-size:12px;
+    color:var(--ink-soft);
+    letter-spacing:.02em;
+  }
+  .footer b{color:var(--blush);}
+</style>
+</head>
+<body>
+  <div class="site-title">🎁 מתנות לרומי 🎁</div>
+  <div class="wrap">
+    <div class="tape"></div>
+    <div class="card">
+      <div class="stamp">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7.5-4.6-10.2-9.2C.2 8.7 1.6 5 5.2 4.2c2-.5 3.9.4 5 2 .1.1.3.1.4 0 1.1-1.6 3-2.5 5-2 3.6.8 5 4.5 3.4 7.6C19.5 16.4 12 21 12 21Z" fill="#E8918A"/></svg>
+        פתק קטן בשבילכם
+      </div>
+      <h1>יום שלם רק לשנינו, בלי תוכניות מראש</h1>
+      <p class="sub">נצא לדרך ונחליט תוך כדי.</p>
+      <div class="divider"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+    <div class="torn"></div>
+    <div class="footer">כרטיס <b>17</b> מתוך 22</div>
+  </div>
+</body>
+</html>
