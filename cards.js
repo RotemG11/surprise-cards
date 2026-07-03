@@ -13,6 +13,10 @@ const firebaseConfig = {
 // קוד סודי משותף שצריך להכניס כדי לממש הטבה - אפשר לשנות בחופשיות
 const SHARED_PASSCODE = "0407";
 
+// פרטי מנהל לאיפוס הטבה שכבר מומשה בחזרה לזמינה
+const ADMIN_NAME = "rotem";
+const ADMIN_PASSWORD = "1137";
+
 const NAME_STORAGE_KEY = "cardsUserName";
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -83,6 +87,8 @@ function injectSharedStyles() {
       color:var(--ink-soft,#8A7A6E);
     }
     .redeem-user a{display:inline;margin:0;padding:0;background:none;color:var(--blush,#E8918A);text-decoration:underline;}
+    .redeem-admin{margin-top:8px;font-size:11px;}
+    .redeem-admin a{display:inline;margin:0;padding:0;background:none;color:var(--ink-soft,#8A7A6E);text-decoration:underline;}
     .cards-modal-backdrop{
       position:fixed;inset:0;background:rgba(74,59,52,.45);
       display:flex;align-items:center;justify-content:center;
@@ -139,15 +145,15 @@ function injectSharedStyles() {
   document.head.appendChild(style);
 }
 
-function openLoginModal(onSuccess) {
+function openCredentialModal({ title, namePlaceholder, passPlaceholder, validate, onSuccess }) {
   injectSharedStyles();
   const backdrop = document.createElement("div");
   backdrop.className = "cards-modal-backdrop";
   backdrop.innerHTML = `
     <div class="cards-modal">
-      <h3>כניסה למימוש הטבה</h3>
-      <input type="text" class="cards-modal-name" placeholder="השם שלך" autocomplete="off">
-      <input type="password" class="cards-modal-pass" placeholder="קוד סודי" autocomplete="off">
+      <h3>${title}</h3>
+      <input type="text" class="cards-modal-name" placeholder="${namePlaceholder}" autocomplete="off">
+      <input type="password" class="cards-modal-pass" placeholder="${passPlaceholder}" autocomplete="off">
       <div class="cards-modal-error"></div>
       <div class="cards-modal-actions">
         <button class="cards-modal-submit">כניסה</button>
@@ -168,15 +174,11 @@ function openLoginModal(onSuccess) {
   function submit() {
     const name = nameInput.value.trim();
     const pass = passInput.value;
-    if (!name) {
-      errorBox.textContent = "נא להזין שם";
+    const error = validate(name, pass);
+    if (error) {
+      errorBox.textContent = error;
       return;
     }
-    if (pass !== SHARED_PASSCODE) {
-      errorBox.textContent = "קוד סודי שגוי";
-      return;
-    }
-    setStoredName(name);
     close();
     onSuccess(name);
   }
@@ -185,6 +187,38 @@ function openLoginModal(onSuccess) {
   backdrop.querySelector(".cards-modal-cancel").addEventListener("click", close);
   passInput.addEventListener("keydown", (e) => { if (e.key === "Enter") submit(); });
   backdrop.addEventListener("click", (e) => { if (e.target === backdrop) close(); });
+}
+
+function openLoginModal(onSuccess) {
+  openCredentialModal({
+    title: "כניסה למימוש הטבה",
+    namePlaceholder: "השם שלך",
+    passPlaceholder: "קוד סודי",
+    validate(name, pass) {
+      if (!name) return "נא להזין שם";
+      if (pass !== SHARED_PASSCODE) return "קוד סודי שגוי";
+      return null;
+    },
+    onSuccess(name) {
+      setStoredName(name);
+      onSuccess(name);
+    }
+  });
+}
+
+function openAdminResetModal(onSuccess) {
+  openCredentialModal({
+    title: "איפוס הטבה (מנהל)",
+    namePlaceholder: "שם משתמש",
+    passPlaceholder: "סיסמה",
+    validate(name, pass) {
+      if (name.toLowerCase() !== ADMIN_NAME || pass !== ADMIN_PASSWORD) {
+        return "פרטי התחברות שגויים";
+      }
+      return null;
+    },
+    onSuccess
+  });
 }
 
 function getCardId() {
@@ -213,9 +247,25 @@ function initCardPage(cardId) {
     }, { merge: true });
   }
 
+  async function doReset() {
+    box.innerHTML = '<div class="redeem-loading">מאפס...</div>';
+    await setDoc(ref, {
+      redeemed: false,
+      redeemedBy: null,
+      redeemedAt: null
+    }, { merge: true });
+  }
+
   function render(data) {
     if (data && data.redeemed) {
-      box.innerHTML = `<div class="redeemed-badge">✓ ההטבה מומשה ע"י ${escapeHtml(data.redeemedBy || "")}${data.redeemedAt ? " בתאריך " + formatDate(data.redeemedAt) : ""}</div>`;
+      box.innerHTML = `
+        <div class="redeemed-badge">✓ ההטבה מומשה ע"י ${escapeHtml(data.redeemedBy || "")}${data.redeemedAt ? " בתאריך " + formatDate(data.redeemedAt) : ""}</div>
+        <div class="redeem-admin"><a href="#" class="cards-reset-link">🔄 איפוס ההטבה (מנהל)</a></div>
+      `;
+      box.querySelector(".cards-reset-link").addEventListener("click", (e) => {
+        e.preventDefault();
+        openAdminResetModal(() => doReset());
+      });
       return;
     }
 
