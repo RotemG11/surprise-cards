@@ -76,7 +76,54 @@
     50%{transform:translate(-50%,8px);}
   }
 
-  /* === עמוד 2: הלוז === */
+  /* === עמוד 2: מסלול הטיסות === */
+  #journey-section{
+    background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%);
+  }
+  .journey-title{
+    font-family:'Varela Round', sans-serif;
+    font-weight:400;
+    font-size:20px;
+    text-align:center;
+    margin:0 0 14px 0;
+    color:var(--ink);
+  }
+  .journey-map{
+    width:100%;
+    max-width:290px;
+  }
+  .journey-map svg{
+    width:100%;
+    height:auto;
+    display:block;
+    overflow:visible;
+  }
+  .journey-dash{
+    fill:none;
+    stroke:#B96B63;
+    stroke-width:2.5;
+    stroke-dasharray:6 6;
+    animation:dash-move 2.5s linear infinite;
+  }
+  @keyframes dash-move{
+    to{ stroke-dashoffset:-24; }
+  }
+  .journey-dot{
+    fill:var(--blush);
+    stroke:#fff;
+    stroke-width:2;
+  }
+  .journey-label{
+    font-family:'Rubik', sans-serif;
+    font-size:12px;
+    fill:var(--ink);
+    direction:ltr;
+  }
+  .journey-plane{
+    font-size:18px;
+  }
+
+  /* === עמוד 3: הלוז === */
   #plan-section{
     background-image: linear-gradient(180deg, rgba(74,59,52,.35) 0%, rgba(74,59,52,.65) 100%), url('plan-bg.jpg');
     background-size:cover;
@@ -139,6 +186,46 @@
     <section id="hero-section">
       <h1>🎉 מזל טוב רומיק שלי 🎉</h1>
       <div class="scroll-hint">גללי למטה<span>⌄</span></div>
+    </section>
+    <section id="journey-section">
+      <div class="journey-title">✈️ לאן טסנו השנה</div>
+      <div class="journey-map">
+        <svg viewBox="0 0 320 520" xmlns="http://www.w3.org/2000/svg">
+          <path class="journey-dash" d="M 160.00 20.00 C 145.00 30.00 70.00 60.00 70.00 80.00 C 70.00 100.00 130.00 120.00 160.00 140.00 C 190.00 160.00 250.00 180.00 250.00 200.00 C 250.00 220.00 190.00 240.00 160.00 260.00 C 130.00 280.00 70.00 300.00 70.00 320.00 C 70.00 340.00 130.00 360.00 160.00 380.00 C 190.00 400.00 250.00 420.00 250.00 440.00 C 250.00 460.00 175.00 490.00 160.00 500.00"/>
+
+          <circle class="journey-dot" cx="160" cy="20" r="6"/>
+          <text class="journey-label" x="174" y="24" text-anchor="start">🇮🇱 ישראל</text>
+
+          <circle class="journey-dot" cx="70" cy="80" r="6"/>
+          <text class="journey-label" x="84" y="84" text-anchor="start">🇪🇸 ספרד</text>
+
+          <circle class="journey-dot" cx="160" cy="140" r="6"/>
+          <text class="journey-label" x="174" y="144" text-anchor="start">🇮🇱 ישראל</text>
+
+          <circle class="journey-dot" cx="250" cy="200" r="6"/>
+          <text class="journey-label" x="236" y="204" text-anchor="end">🇮🇹 איטליה (סקי)</text>
+
+          <circle class="journey-dot" cx="160" cy="260" r="6"/>
+          <text class="journey-label" x="174" y="264" text-anchor="start">🇮🇱 ישראל</text>
+
+          <circle class="journey-dot" cx="70" cy="320" r="6"/>
+          <text class="journey-label" x="84" y="324" text-anchor="start">🇧🇷 ברזיל</text>
+
+          <circle class="journey-dot" cx="160" cy="380" r="6"/>
+          <text class="journey-label" x="174" y="384" text-anchor="start">🇨🇱 צ'ילה</text>
+
+          <circle class="journey-dot" cx="250" cy="440" r="6"/>
+          <text class="journey-label" x="236" y="444" text-anchor="end">🇧🇴 בוליביה</text>
+
+          <circle class="journey-dot" cx="160" cy="500" r="6"/>
+          <text class="journey-label" x="174" y="504" text-anchor="start">🇵🇪 פרו</text>
+
+          <text class="journey-plane">✈️
+            <animateMotion dur="14s" repeatCount="indefinite" path="M 160.00 20.00 C 145.00 30.00 70.00 60.00 70.00 80.00 C 70.00 100.00 130.00 120.00 160.00 140.00 C 190.00 160.00 250.00 180.00 250.00 200.00 C 250.00 220.00 190.00 240.00 160.00 260.00 C 130.00 280.00 70.00 300.00 70.00 320.00 C 70.00 340.00 130.00 360.00 160.00 380.00 C 190.00 400.00 250.00 420.00 250.00 440.00 C 250.00 460.00 175.00 490.00 160.00 500.00"/>
+          </text>
+        </svg>
+      </div>
+      <div class="scroll-hint" style="position:static;margin-top:10px;color:var(--ink-soft);animation:none;">גללי למטה<span>⌄</span></div>
     </section>
     <section id="plan-section">
       <div class="plan-title">התכניות שלנו להיום</div>
