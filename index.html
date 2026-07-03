@@ -57,57 +57,64 @@
     margin:0 0 6px 0;
   }
 
-  .list{
+  .plan-title{
+    font-family:'Varela Round', sans-serif;
+    font-weight:400;
+    font-size:19px;
+    text-align:center;
+    margin:26px 0 14px 0;
+  }
+  .plan-list{
     width:100%;
     max-width:390px;
-    margin-top:18px;
   }
-  .list a{
+  .plan-row{
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    text-decoration:none;
-    color:var(--ink);
+    gap:14px;
     background:var(--card);
     padding:13px 20px;
     margin:8px 0;
     border-radius:100px;
-    font-size:15px;
     box-shadow:0 8px 18px -12px rgba(74,59,52,.35);
   }
-  .list a:hover{opacity:.92;}
+  .plan-time{
+    font-family:'Varela Round', sans-serif;
+    font-size:14px;
+    color:#fff;
+    background:var(--blush);
+    padding:4px 12px;
+    border-radius:100px;
+    min-width:44px;
+    text-align:center;
+  }
+  .plan-text{
+    font-size:15px;
+    color:var(--ink);
+  }
+
+  .benefits-link{
+    display:inline-block;
+    margin-top:26px;
+    font-size:14px;
+    color:#fff;
+    background:var(--sage);
+    text-decoration:none;
+    padding:11px 24px;
+    border-radius:100px;
+    box-shadow:0 8px 18px -12px rgba(74,59,52,.35);
+  }
+  .benefits-link:hover{opacity:.92;}
 </style>
 </head>
 <body id="index-page">
   <div class="hero">
     <img src="celebration.gif" alt="חגיגה" loading="eager">
     <h1>🎉 יום הולדת שמח רומיק שלי 🎉</h1>
-    <p>22 הפתעות קטנות מחכות לך</p>
+    <p>התוכנית להיום</p>
   </div>
-  <div class="list">
-    <a href='01.html' data-card='01'>כרטיס 01</a>
-    <a href='02.html' data-card='02'>כרטיס 02</a>
-    <a href='03.html' data-card='03'>כרטיס 03</a>
-    <a href='04.html' data-card='04'>כרטיס 04</a>
-    <a href='05.html' data-card='05'>כרטיס 05</a>
-    <a href='06.html' data-card='06'>כרטיס 06</a>
-    <a href='07.html' data-card='07'>כרטיס 07</a>
-    <a href='08.html' data-card='08'>כרטיס 08</a>
-    <a href='09.html' data-card='09'>כרטיס 09</a>
-    <a href='10.html' data-card='10'>כרטיס 10</a>
-    <a href='11.html' data-card='11'>כרטיס 11</a>
-    <a href='12.html' data-card='12'>כרטיס 12</a>
-    <a href='13.html' data-card='13'>כרטיס 13</a>
-    <a href='14.html' data-card='14'>כרטיס 14</a>
-    <a href='15.html' data-card='15'>כרטיס 15</a>
-    <a href='16.html' data-card='16'>כרטיס 16</a>
-    <a href='17.html' data-card='17'>כרטיס 17</a>
-    <a href='18.html' data-card='18'>כרטיס 18</a>
-    <a href='19.html' data-card='19'>כרטיס 19</a>
-    <a href='20.html' data-card='20'>כרטיס 20</a>
-    <a href='21.html' data-card='21'>כרטיס 21</a>
-    <a href='22.html' data-card='22'>כרטיס 22</a>
-  </div>
-  <script type="module" src="cards.js"></script>
+  <div class="plan-list" id="plan-list"></div>
+  <a class="benefits-link" href="benefits.html">🎁 ההטבות שלך</a>
+  <script src="plans.js"></script>
 </body>
 </html>
