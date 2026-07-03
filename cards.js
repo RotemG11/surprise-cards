@@ -11,7 +11,7 @@ const firebaseConfig = {
 };
 
 // קוד סודי משותף שצריך להכניס כדי לממש הטבה - אפשר לשנות בחופשיות
-const SHARED_PASSCODE = "2222";
+const SHARED_PASSCODE = "0407";
 
 const NAME_STORAGE_KEY = "cardsUserName";
 
