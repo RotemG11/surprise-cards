@@ -95,40 +95,39 @@
   .plan-row{
     display:flex;
     align-items:center;
-    gap:14px;
-    background:var(--card);
-    padding:13px 20px;
-    margin:8px 0;
-    border-radius:100px;
-    box-shadow:0 8px 18px -12px rgba(74,59,52,.35);
+    gap:16px;
+    padding:18px 20px;
+    margin:10px 0;
+    border-radius:20px;
+    box-shadow:0 12px 24px -12px rgba(0,0,0,.4);
+    color:#fff;
+  }
+  .plan-icon{
+    font-size:30px;
+    line-height:1;
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,.25));
+  }
+  .plan-info{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    flex:1;
+  }
+  .plan-text{
+    font-size:16px;
+    font-weight:500;
+    text-shadow:0 1px 4px rgba(0,0,0,.25);
   }
   .plan-time{
     font-family:'Varela Round', sans-serif;
-    font-size:14px;
-    color:#fff;
-    background:var(--blush);
-    padding:4px 12px;
-    border-radius:100px;
-    min-width:44px;
-    text-align:center;
-  }
-  .plan-text{
-    font-size:15px;
-    color:var(--ink);
+    font-size:13px;
+    opacity:.9;
   }
 
-  .benefits-link{
-    display:inline-block;
-    margin-top:26px;
-    font-size:14px;
-    color:#fff;
-    background:var(--sage);
-    text-decoration:none;
-    padding:11px 24px;
-    border-radius:100px;
-    box-shadow:0 8px 18px -12px rgba(74,59,52,.35);
-  }
-  .benefits-link:hover{opacity:.92;}
+  .theme-home{background:linear-gradient(135deg,#F2B79A,#E8918A);}
+  .theme-pool{background:linear-gradient(135deg,#7FD1E0,#3E93B8);}
+  .theme-spa{background:linear-gradient(135deg,#C7AEDE,#8F6FB0);}
+  .theme-dinner{background:linear-gradient(135deg,#6B4A3A,#2E1F1A);}
 </style>
 </head>
 <body id="index-page">
@@ -140,7 +139,6 @@
     <section id="plan-section">
       <div class="plan-title">התוכנית להיום</div>
       <div class="plan-list" id="plan-list"></div>
-      <a class="benefits-link" href="benefits.html">🎁 ההטבות שלך</a>
     </section>
   </div>
   <script src="plans.js"></script>
