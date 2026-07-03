@@ -1,8 +1,8 @@
 // התוכנית של היום - כדי להוסיף/לערוך שורה, פשוט הוסיפו/שנו אובייקט ברשימה כאן
 // theme אפשריים (הרקע של השורה): home, pool, spa, dinner
 const PLAN_ITEMS = [
-  { time: "7:30", text: "left the home", icon: "🏠", theme: "home" },
-  { time: "9:00", text: "\"אגדודו בבריכה\"", icon: "🏊‍♀️", theme: "pool" },
+  { time: "7:30", text: "יציאה מהבית", icon: "🏠", theme: "home" },
+  { time: "9:00", text: "אגדודו בבריכה", icon: "🏊‍♀️", theme: "pool" },
   { time: "2:00", text: "מסאז", icon: "💆‍♀️", theme: "spa" },
   { time: "19:00", text: "ארוחת ערב מפנקת", icon: "🍽️", theme: "dinner" },
 ];
