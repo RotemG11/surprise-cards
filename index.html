@@ -18,51 +18,75 @@
     --tape:#F4D77E;
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  html,body{margin:0;padding:0;height:100%;}
   body{
-    min-height:100vh;
-    background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%);
     font-family:'Rubik', sans-serif;
     color:var(--ink);
+  }
+
+  .scroll-container{
+    height:100vh;
+    overflow-y:scroll;
+    scroll-snap-type:y mandatory;
+  }
+
+  section{
+    height:100vh;
+    width:100%;
+    scroll-snap-align:start;
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding:40px 18px 60px;
+    justify-content:center;
+    position:relative;
+    padding:18px;
   }
 
-  .hero{
+  /* === עמוד 1: ברכה עם תמונת רקע === */
+  #hero-section{
+    background-image: linear-gradient(180deg, rgba(74,59,52,.15) 0%, rgba(74,59,52,.55) 100%), url('romi.jpg');
+    background-size:cover;
+    background-position:center;
     text-align:center;
-    max-width:390px;
-    width:100%;
-    margin-bottom:8px;
   }
-  .hero img{
-    width:280px;
-    max-width:100%;
-    height:auto;
-    display:block;
-    margin:0 auto;
-  }
-  .hero h1{
+  #hero-section h1{
     font-family:'Varela Round', sans-serif;
     font-weight:400;
-    font-size:26px;
+    font-size:34px;
     line-height:1.5;
-    color:var(--ink);
-    margin:6px 0 8px 0;
+    color:#fff;
+    text-shadow:0 2px 12px rgba(0,0,0,.35);
+    margin:0;
+    max-width:340px;
   }
-  .hero p{
-    font-size:14px;
-    color:var(--ink-soft);
-    margin:0 0 6px 0;
+  .scroll-hint{
+    position:absolute;
+    bottom:34px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#fff;
+    font-size:13px;
+    opacity:.9;
+    text-align:center;
+    animation:bounce 1.8s infinite;
+  }
+  .scroll-hint span{display:block;font-size:20px;margin-top:2px;}
+  @keyframes bounce{
+    0%,100%{transform:translate(-50%,0);}
+    50%{transform:translate(-50%,8px);}
+  }
+
+  /* === עמוד 2: הלוז === */
+  #plan-section{
+    background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%);
   }
 
   .plan-title{
     font-family:'Varela Round', sans-serif;
     font-weight:400;
-    font-size:19px;
+    font-size:22px;
     text-align:center;
-    margin:26px 0 14px 0;
+    margin:0 0 20px 0;
   }
   .plan-list{
     width:100%;
@@ -108,13 +132,17 @@
 </style>
 </head>
 <body id="index-page">
-  <div class="hero">
-    <img src="celebration.gif" alt="חגיגה" loading="eager">
-    <h1>🎉 יום הולדת שמח רומיק שלי 🎉</h1>
-    <p>התוכנית להיום</p>
+  <div class="scroll-container">
+    <section id="hero-section">
+      <h1>🎉 מזל טוב רומיק שלי 🎉</h1>
+      <div class="scroll-hint">גללי למטה<span>⌄</span></div>
+    </section>
+    <section id="plan-section">
+      <div class="plan-title">התוכנית להיום</div>
+      <div class="plan-list" id="plan-list"></div>
+      <a class="benefits-link" href="benefits.html">🎁 ההטבות שלך</a>
+    </section>
   </div>
-  <div class="plan-list" id="plan-list"></div>
-  <a class="benefits-link" href="benefits.html">🎁 ההטבות שלך</a>
   <script src="plans.js"></script>
 </body>
 </html>
