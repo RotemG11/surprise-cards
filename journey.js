@@ -15,14 +15,20 @@ function initJourney() {
 
   const REFERENCE_VB_WIDTH = 145;
 
+  function easeInOut(t) {
+    return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  }
+
   function showLeg(i) {
     const leg = JOURNEY_LEGS[i];
-    svg.setAttribute("viewBox", leg.viewBox);
+    const startVb = (svg.getAttribute("viewBox") || leg.viewBox).split(" ").map(Number);
+    const targetVb = leg.viewBox.split(" ").map(Number);
+
     pathEl.setAttribute("d", leg.path);
     labelFrom.textContent = leg.from;
     labelTo.textContent = leg.to;
 
-    const vbWidth = parseFloat(leg.viewBox.split(" ")[2]);
+    const vbWidth = targetVb[2];
     const planeScale = Math.max(0.35, Math.min(1.8, vbWidth / REFERENCE_VB_WIDTH));
 
     pathEl.style.strokeDasharray = "2000";
@@ -40,6 +46,11 @@ function initJourney() {
     plane.style.opacity = "1";
     function tick(now) {
       const t = Math.max(0, Math.min(1, (now - start) / duration));
+      const camT = easeInOut(t);
+
+      const vb = startVb.map((v, k) => v + (targetVb[k] - v) * camT);
+      svg.setAttribute("viewBox", vb.join(" "));
+
       const pos = t * (pts.length - 1);
       const i0 = Math.floor(pos);
       const i1 = Math.min(pts.length - 1, i0 + 1);
