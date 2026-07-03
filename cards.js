@@ -2,12 +2,12 @@
 // מלאו כאן את הפרטים שקיבלתם משלב 3 בהוראות ההקמה של Firebase
 // (Project settings -> General -> Your apps -> SDK setup and configuration)
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDPNwR6bELKZnKncYVl__psFkQNKY2NDl0",
+  authDomain: "romi-birthday-cards.firebaseapp.com",
+  projectId: "romi-birthday-cards",
+  storageBucket: "romi-birthday-cards.firebasestorage.app",
+  messagingSenderId: "1082725422298",
+  appId: "1:1082725422298:web:5dfe7be02df7a26a5e01e3"
 };
 
 // קוד סודי משותף שצריך להכניס כדי לממש הטבה - אפשר לשנות בחופשיות
